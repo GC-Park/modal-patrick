@@ -56,7 +56,7 @@ export var ModalPortal = function (props) {
         { children: _jsx(ModalContainer, { children: props.children }) }
       )
     ),
-    $modalRoot
+    $modalRoot ? $modalRoot : document.body
   );
 };
 var ModalContainer = styled.div(
