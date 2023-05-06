@@ -1,12 +1,13 @@
 {
   "name": "react-modal-patrick",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "browser": "./browser/specific/main.js",
   "description": "Patrick's Modal Component",
   "repository": "https://github.com/GC-Park/modal-patrick",
+  "keywords" : ["react", "component", "Modal", "front-end", "dialog", "typescript" ],
   "contributors": [
     "Patrick"
   ],
