@@ -1,4 +1,4 @@
-import React, { ReactChild, useEffect, useRef } from 'react';
+import React, { ReactChild, useEffect, useRef, useContext, useState } from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ interface Props {
   closeModalHandler: () => void;
 }
 
-const ModalPortal = (props: Props) => {
+export const ModalPortal = (props: Props) => {
   const $modalRoot = document.getElementById('modal-root') as HTMLElement;
   const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -57,4 +57,40 @@ const ModalContainer = styled.div`
   overflow: scroll;
 `;
 
-export default ModalPortal;
+interface ModalContextType {
+  isModalOpen: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+}
+
+export const ModalContext = React.createContext<ModalContextType | null>(null);
+
+export const useModalContext = () => {
+  const modalContext = useContext(ModalContext);
+
+  if (modalContext === null) {
+    throw new Error('modalContext값이 null입니다.');
+  }
+
+  return modalContext;
+};
+
+export const ModalContextProvider = (props: { children: React.ReactNode }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const contextValue: ModalContextType = {
+    isModalOpen: isModalOpen,
+    openModal: openModal,
+    closeModal: closeModal,
+  };
+
+  return <ModalContext.Provider value={contextValue}>{props.children}</ModalContext.Provider>;
+};
