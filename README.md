@@ -20,8 +20,12 @@ I'm Patrick. This is the first package I uploaded. I recommend you use this when
 
 ## Import components
 
-```typescript
-import { ModalPortal, ModalContext, useModalContext, ModalContextProvider } from 'react-modal-patrick';
+``` typescript
+import { ModalPortal,
+         ModalContext, 
+         useModalContext, 
+         ModalContextProvider } 
+from 'react-modal-patrick';
 ```
 
 ## Setup
@@ -70,8 +74,9 @@ export const Modal= {
 ```
 
 ## ModalPortal Props
+
 ### children
+
 Prop expects a single child of type 'ReactChild'. It should be ReactChild type.
 
-
-## Thank you. Have a good day! 😄
+### Thank you. Have a good day! 😄
